@@ -1,10 +1,11 @@
-const { POOLS } = require("@layerzerolabs/stargate-sdk")
-const { getEndpointId } = require("../utils/network")
+//const { POOLS } = require("@layerzerolabs/stargate-sdk")
+const { getEndpointId,POOLS } = require("../utils/network")
 
 task("createPools", "create the pools for the network").setAction(async (taskArgs) => {
     let router = await ethers.getContract("Router")
+    
     let pools = POOLS[hre.network.name]
-    // console.log(pools)
+     console.log(pools)
     // for(let poolId in pools){
     //     console.log(pools[poolId].info)
     //     console.log(`poolId: ${poolId}`)
@@ -16,7 +17,7 @@ task("createPools", "create the pools for the network").setAction(async (taskArg
     for (let poolId in pools) {
         console.log(pools[poolId].info)
         console.log(`poolId: ${poolId}`)
-        console.table(pools[poolId].chainPaths)
+//        console.table(pools[poolId].chainPaths)
         let sharedDecimals = pools[poolId].info.sharedDecimals
         let address = pools[poolId].info.address
 

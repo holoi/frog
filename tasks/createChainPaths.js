@@ -1,6 +1,7 @@
-const { POOLS } = require("@layerzerolabs/stargate-sdk")
-const { getEndpointId } = require("../utils/network")
-const { getEndpointIdByName } = require("@layerzerolabs/core-sdk")
+//const { POOLS } = require("@layerzerolabs/stargate-sdk")
+const { POOLS,getEndpointId,getEndpointIdByName } = require("../utils/network")
+//const { getEndpointIdByName } = require("@layerzerolabs/core-sdk")
+
 
 task("createChainPaths", "given a Stargate router, create chainPaths for a token")
     .addParam("targetNetwork", "the stargate router address")
@@ -15,6 +16,7 @@ task("createChainPaths", "given a Stargate router, create chainPaths for a token
         for (let srcPoolId in poolData) {
             console.log(`mapping ${hre.network.name}[${getEndpointId()}] srcPoolId: ${srcPoolId}`)
             let chainPaths = poolData[srcPoolId].chainPaths
+            console.log(chainPaths)
             for (let dstObj of chainPaths) {
                 let { dstChainId, dstPoolId, weight } = dstObj
                 if (dstChainId != getEndpointIdByName(taskArgs.targetNetwork)) {

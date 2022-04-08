@@ -13,6 +13,7 @@ task("addLiquidity", "add liquidity to stargate instance")
         let Pool = await ethers.getContractFactory("Pool")
         let poolData = await factory.getPool(taskArgs.poolId) // return stg lp address
         let pool = await Pool.attach(poolData)
+        console.log('------------------',pool.address)
         let tokenAddr = await pool.token()
         console.log(`${hre.network.name} > addLiquidity poolId:${taskArgs.poolId} tokenAddr: ${tokenAddr}`)
 

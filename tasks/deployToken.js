@@ -8,7 +8,7 @@ task("deployToken", "deploy a MockToken")
         console.log(`owner: ${owner.address}`)
 
         let MockToken = await ethers.getContractFactory("MockToken")
-        let mockToken = await MockToken.deploy(taskArgs.name, taskArgs.symbol)
+        let mockToken = await MockToken.deploy(taskArgs.name, taskArgs.symbol, 18)
         console.log(`mockToken.address: ${mockToken.address}`)
         console.log(`name: ${await mockToken.name()} | symbol: ${await mockToken.symbol()}`)
     })

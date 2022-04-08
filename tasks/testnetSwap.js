@@ -1,4 +1,4 @@
-const { CHAIN_ID } = require("@layerzerolabs/core-sdk")
+const { POOLS,getEndpointId,getEndpointIdByName } = require("../utils/network")
 
 task("testnetSwap", "swap using stargate")
     .addParam("poolId", "the poolId")
@@ -29,8 +29,8 @@ task("testnetSwap", "swap using stargate")
         let bnQty = ethers.BigNumber.from(taskArgs.qty)
         let bnQtyMin = bnQty.mul(993).div(1000)
 
-        let dstChainId = CHAIN_ID[taskArgs.targetNetwork]
-        console.log(`source(${CHAIN_ID[hre.network.name]})  swap--> dstChainId(${dstChainId})`)
+        let dstChainId = getEndpointIdByName(taskArgs.targetNetwork)
+        console.log(`source(${getEndpointIdByName(hre.network.name)})  swap--> dstChainId(${dstChainId})`)
         let tx = await (
             await router.swap(
                 dstChainId,
@@ -39,10 +39,11 @@ task("testnetSwap", "swap using stargate")
                 owner.address,
                 bnQty,
                 bnQtyMin,
+                //{ dstGasForCall: 1, dstNativeAmount: ethers.utils.parseEther("0.01"), dstNativeAddr: "0x7E57DdEA1F9a028343020B9213b9A8d3Cb9Fa0d9" },
                 { dstGasForCall: 0, dstNativeAmount: 0, dstNativeAddr: "0x" },
                 owner.address,
                 "0x",
-                { value: ethers.utils.parseEther("0.1") } // guess a value high enough , it refunds extra
+                { value: ethers.utils.parseEther("1.5") } // guess a value high enough , it refunds extra
             )
         ).wait()
         console.log(`tx.transactionHash: ${tx.transactionHash}`)

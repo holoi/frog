@@ -14,6 +14,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
 
     let lzAddress
     if (hre.network.name === "hardhat") {
+        //lzAddress = (await deployments.get("LZEndpointMock")).address
         lzAddress = (await deployments.get("LZEndpointMock")).address
         // console.log(`  -> LZEndpointMock: ${lzAddress}`)
     } else {

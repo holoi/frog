@@ -3,9 +3,9 @@
 pragma solidity 0.7.6;
 pragma abicoder v2;
 
-import "@layerzerolabs/contracts/contracts/interfaces/ILayerZeroReceiver.sol";
-import "@layerzerolabs/contracts/contracts/interfaces/ILayerZeroEndpoint.sol";
-import "@layerzerolabs/contracts/contracts/interfaces/ILayerZeroUserApplicationConfig.sol";
+import "../interfaces/ILayerZeroReceiver.sol";
+import "../interfaces/ILayerZeroEndpoint.sol";
+import "../interfaces/ILayerZeroUserApplicationConfig.sol";
 
 /*
 mocking multi endpoint connection.

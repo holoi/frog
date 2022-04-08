@@ -5,9 +5,9 @@ pragma solidity 0.7.6;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-import "@layerzerolabs/contracts/contracts/interfaces/ILayerZeroEndpoint.sol";
-import "@layerzerolabs/contracts/contracts/interfaces/ILayerZeroReceiver.sol";
-import "@layerzerolabs/contracts/contracts/interfaces/ILayerZeroUserApplicationConfig.sol";
+import "./interfaces/ILayerZeroEndpoint.sol";
+import "./interfaces/ILayerZeroReceiver.sol";
+import "./interfaces/ILayerZeroUserApplicationConfig.sol";
 
 contract OmnichainFungibleToken is ERC20, Ownable, ILayerZeroReceiver, ILayerZeroUserApplicationConfig {
     // the only endpointId these tokens will ever be minted on
